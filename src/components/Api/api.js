@@ -6,13 +6,15 @@ const API_KEY = '221ffc853d0fe920bb3bb7b17604e522';
 // Base URL da OpenWeatherMap
 const BASE_URL = 'https://api.openweathermap.org/data/2.5/weather';
 
+
+
 /**
  * Função para fazer a chamada à API do OpenWeatherMap e retornar dados do clima
  * @param {string} city - Nome da cidade para a qual buscar o clima
  * @param {string} units - Unidade de medida para a temperatura (pode ser 'metric' ou 'imperial')
  * @returns {Promise<Object>} - Dados do clima
  */
-async function getWeather(city, units = 'metric') {
+export async function getWeather(city, units = 'metric') {
   const url = `${BASE_URL}?q=${city}&units=${units}&appid=${API_KEY}`;
 
   try {
