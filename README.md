@@ -53,6 +53,32 @@ npm install Executando o projeto:
 
 npm start Acesse o projeto no navegador em http://localhost:3000.
 
+**Comando Essenciais GIT** 
+
+- git clone (Link do projeto) 
+- cd clima-inclusivo (acessa pasta do projeto)
+- Criando uma nova branch
+- git checkout -b nome-da-sua-branch
+  Adicionando as alterações
+- git add .
+  Realizando o commit
+- git commit -m "Descrição das alterações realizadas"
+  Enviando as alterações para o repositório remoto
+- git push origin nome-da-sua-branch
+  Atualizando sua branch local
+- git pull origin main
+  Fluxo de trabalho
+- git clone - Clonar o projeto.
+- git checkout -b nome-da-sua-branch - Criar uma nova branch.
+  Realizar alterações no código.
+- git add . - Adicionar arquivos.
+- git commit -m "Mensagem do commit" - Salvar alterações.
+- git push origin nome-da-sua-branch - Enviar alterações.
+- git pull origin main - Atualizar branch local.
+  alerta( nome da branch é relacionado com o nome da tarefa )
+  exemplo: CriarComponenteSobre 
+  nome da branch : criar-componente-sobre
+
 
 **Funcionalidades Principais**
 
@@ -69,4 +95,9 @@ Visualização de dados passados para análise de tendências.
 
 **Referencias**
 
-teste
+1- [OpenWeatherMap] (https://openweathermap.org/) - link API do Projeito
+
+2- [MDN Web Docs] - CSS (https://react.dev/) 
+
+3- https://developer.mozilla.org/en-US/docs/Web/CSS
+
