@@ -22,14 +22,22 @@ React: Biblioteca JavaScript para construção da interface de usuário. Node.js
 │
 
 ├── /src
+
 │ ├── /components # Componentes reutilizáveis da interface
+
 │ ├── /pages # Páginas principais da aplicação
+
 │ ├── /services # Serviços para consumo de APIs
+
 │ ├── /styles # Arquivos de estilização (CSS/Tailwind)
+
 │ └── index.js # Arquivo principal de entrada da aplicação
 │
+
 ├── /public # Recursos públicos como imagens e ícones
+
 ├── package.json # Dependências e scripts do projeto
+
 └── README.md # Documentação inicial do projeto
 
 
