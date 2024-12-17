@@ -95,9 +95,7 @@ Visualização de dados passados para análise de tendências.
 
 **Referencias**
 
-1- [OpenWeatherMap] (https://openweathermap.org/) - link API do Projeito
-
-2- [MDN Web Docs] - CSS (https://react.dev/) 
-
-3- https://developer.mozilla.org/en-US/docs/Web/CSS
+- [OpenWeatherMap](https://openweathermap.org/) - API para dados climáticos.
+- [React](https://react.dev/) - Biblioteca JavaScript.
+- [MDN Web Docs - CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) - Documentação oficial sobre CSS.
 
