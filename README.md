@@ -18,7 +18,9 @@ React: Biblioteca JavaScript para construção da interface de usuário. Node.js
 **Estrutura do projeto**
 
 /clima-inclusivo
+
 │
+
 ├── /src
 │ ├── /components # Componentes reutilizáveis da interface
 │ ├── /pages # Páginas principais da aplicação
