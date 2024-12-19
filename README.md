@@ -96,7 +96,13 @@ Visualização de dados passados para análise de tendências.
 
 - (https://github.com/sifontesj23) - Jesus Sifontes
 - (https://github.com/dronreef2?tab=repositories)- Guilherme Nas
+- (https://github.com/GabrielleGobbi)- Géssica Gabrielle Monteiro
+- (https://github.com/marcobarcelos7)- Marco Antonio Barcelos
+- (https://github.com/YokoFarias)- YokoFarias
+- (https://github.com/Eric-Borges)- Eric Borges
+- (https://github.com/andrea-leite)- Andréa Leite
 
+  
 **Referencias**
 
 - [OpenWeatherMap](https://openweathermap.org/) - API para dados climáticos.
