@@ -1,12 +1,10 @@
-// api.js
+
 
 // Chave de API 
 const API_KEY = '221ffc853d0fe920bb3bb7b17604e522';
 
 // Base URL da OpenWeatherMap
 const BASE_URL = 'https://api.openweathermap.org/data/2.5/weather';
-
-
 
 /**
  * Função para fazer a chamada à API do OpenWeatherMap e retornar dados do clima
@@ -35,7 +33,7 @@ export async function getWeather(city, units = 'metric') {
  * Função para formatar os dados recebidos e exibir as informações principais
  * @param {Object} data - Dados do clima
  */
-function displayWeather(data) {
+export function displayWeather(data) {
   if (data && data.main) {
     const temp = data.main.temp;
     const humidity = data.main.humidity;

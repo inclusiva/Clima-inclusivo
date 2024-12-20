@@ -1,0 +1,151 @@
+/* Container principal */
+.App {
+    font-family: Arial, sans-serif;
+    background-color: #1e1e2f;
+    color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 50px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Título principal */
+#title-Weather {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+/* Campo de entrada */
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #444;
+    border-radius: 5px;
+    background-color: #2a2a40;
+    color: #fff;
+    outline: none;
+    margin-bottom: 20px;
+}
+
+input[type="text"]::placeholder {
+    color: #aaa;
+}
+
+/* Lista de cidades */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #2a2a40;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+ul li:hover {
+    background-color: #444;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Mensagem de nenhuma cidade encontrada */
+ul p {
+    color: #f44336;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Container de detalhes do clima */
+#containerClima {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    border-radius: 1rem;
+    background-color: #2a2a40;
+    margin: 0 auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+/* Lista de detalhes dentro do container do clima */
+#containerClima ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#containerClima li {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+/* Imagem do ícone de clima */
+#containerClima img {
+    margin-top: 10px;
+    width: 80px;
+    height: 80px;
+}
+
+/* Botão Voltar */
+#containerClima button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 15px;
+}
+
+#containerClima button:hover {
+    background-color: #45a049;
+    box-shadow: 0 2px 6px rgba(0, 255, 0, 0.3);
+}
+
+/* Acessibilidade para foco */
+ul li:focus {
+    outline: 2px solid #4CAF50;
+    background-color: #444;
+}
+
+#containerClima button:focus {
+    outline: 2px solid #ffffff;
+    background-color: #45a049;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .App {
+        max-width: 90%;
+        padding: 15px;
+    }
+
+    #containerClima {
+        padding: 2rem;
+    }
+
+    input[type="text"] {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    ul li {
+        padding: 12px;
+    }
+}
