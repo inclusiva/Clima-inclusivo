@@ -1,115 +1,56 @@
-import React, { useState, useEffect } from "react";
-import { getWeather } from '../Api/Api';
+import React from 'react';
+//import './WeatherCard.css'; // Certifique-se de que este arquivo esteja ausente ou integrado no App.css
 
-export function WeatherCard() {
-    const [cities] = useState([
-        "New York",
-        "London",
-        "Tokyo",
-        "Paris",
-        "São Paulo",
-        "Rio de Janeiro",
-        "Shanghai",
-        "Mumbai",
-        "Los Angeles",
-        "Moscow",
-        "Dubai",
-        "Hong Kong",
-        "Sydney",
-        "Singapore",
-        "Berlin",
-        "Beijing",
-        "Mexico City",
-        "Seoul",
-        "Istanbul",
-        "Bangkok",
-        "Buenos Aires",
-    ]); // Lista de cidades exemplo
+const WeatherCard = ({ weather }) => {
+  if (!weather) {
+    return <p>Carregando...</p>;
+  }
 
-    const [weatherData, setWeatherData] = useState(null);
-    const [search, setSearch] = useState('');
-    const [selectedCity, setSelectedCity] = useState(null);
+  // Lista dos dias da semana
+  const daysOfWeek = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
 
-    // Função para carregar os dados do clima da cidade selecionada
-    useEffect(() => {
-        const loadWeather = async () => {
-            if (selectedCity) {
-                try {
-                    const data = await getWeather(selectedCity);
-                    if (data) {
-                        setWeatherData(data);
-                    }
-                } catch (error) {
-                    console.error('Erro ao carregar os dados:', error);
-                }
-            }
-        };
-        loadWeather();
-    }, [selectedCity]);
+  // Obter o dia atual e os próximos 4 dias
+  const today = new Date();
+  const currentDayIndex = today.getDay();
+  const nextDays = Array.from({ length: 4 }, (_, i) => {
+    const index = (currentDayIndex + i + 1) % 7;
+    return daysOfWeek[index];
+  });
 
-    // Filtra as cidades com base na busca
-    const filteredCities = cities.filter(city =>
-        city.toLowerCase().includes(search.toLowerCase())
-    );
+  // Renderização do clima atual
+  const currentWeather = (
+    <div className="current-weather">
+      <h2>{weather.name}</h2>
+      <p>{Math.round(weather.main.temp)}°C</p>
+      <p>Sensação térmica: {Math.round(weather.main.feels_like)}°C</p>
+      <p>Máxima: {Math.round(weather.main.temp_max)}°C</p>
+      <p>Mínima: {Math.round(weather.main.temp_min)}°C</p>
+      <p>Chances de chuva: {weather.clouds.all}%</p>
+    </div>
+  );
 
-    // Renderiza os detalhes do clima da cidade selecionada
-    const renderWeatherDetails = () => (
-        weatherData && (
-            <div id="weatherContainer">
-                <ul>
-                    <li><strong>Cidade:</strong> {weatherData.name}</li>
-                    <li><strong>Temperatura:</strong> {weatherData.main.temp}°C</li>
-                    <li><strong>Humidade:</strong> {weatherData.main.humidity}%</li>
-                    <li><strong>Condição:</strong> {weatherData.weather[0].description}</li>
-                    <li>
-                        <img
-                            src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
-                            alt="Ícone do clima"
-                        />
-                    </li>
-                </ul>
-                <button onClick={() => { setSelectedCity(null); setSearch(''); }}>
-                    Voltar
-                </button>
-            </div>
-        )
-    );
+  // Renderização do clima para os próximos dias
+  const forecastWeather = nextDays.map((day, index) => (
+    <div key={index} className="forecast-day">
+      <p>{day}</p>
+      {/* Exemplo: Ajuste isso com base na API completa */}
+      <p>Máx: {Math.round(weather.main.temp_max)}°C</p>
+      <p>Mín: {Math.round(weather.main.temp_min)}°C</p>
+      {/* Simboliza diferentes condições climáticas */}
+      <img
+        src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
+        alt={weather.weather[0].description}
+      />
+    </div>
+  ));
 
-    return (
-        <div className="App">
-            <input
-                type="text"
-                placeholder="Buscar cidade"
-                value={search}
-                onChange={(e) => {
-                    const searchValue = e.target.value;
-                    setSearch(searchValue);
-                    if (selectedCity && searchValue !== selectedCity) {
-                        setSelectedCity(null);
-                    }
-                }}
-            />
-            <ul>
-                {search ? (
-                    filteredCities.length === 0 ? (
-                        <p>Nenhuma cidade encontrada.</p>
-                    ) : selectedCity ? (
-                        renderWeatherDetails() // Exibe os detalhes do clima da cidade selecionada
-                    ) : (
-                        filteredCities.map(city => (
-                            <li
-                                key={city}
-                                onClick={() => {
-                                    setSelectedCity(city);
-                                    setSearch(city);
-                                }}
-                            >
-                                {city}
-                            </li>
-                        ))
-                    )
-                ) : null}
-            </ul>
-        </div>
-    );
-}
+  return (
+    <div className="weather-card">
+      {currentWeather}
+      <div className="forecast">{forecastWeather}</div>
+    </div>
+  );
+};
+
+export { WeatherCard };
+
