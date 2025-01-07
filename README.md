@@ -38,7 +38,7 @@ As principais ferramentas e tecnologias utilizadas no desenvolvimento do projeto
 - [Yoko Farias](https://github.com/YokoFarias)  
 - [Andrea Leite](https://github.com/andrea-leite)  
 - [Eric Borges](https://github.com/Eric-Borges)  
-- [Marco Barcelos](https://github.com/marcobarcelos7)  
+- [Marco Barcelos](https://github.com/marcobarcelos7)  - [LinkedIn](https://www.linkedin.com/in/marco-antonio-barcelos/)
 - [Guilherme Nas](https://github.com/dronreef)  
 - [Kauany Lima](https://www.linkedin.com/in/kauany-lima-4b161724a/)  
 
