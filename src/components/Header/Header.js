@@ -1,15 +1,15 @@
 import React from 'react';
-import headerImage from './header.jpg'; // Verifique se o nome está correto
-import './Style.css'; // Verifique se o caminho do CSS está correto
+import header from './header.png'; // Imagem do cabeçalho
 
-export function Header() {
-    return (
-        <header className="cabecalho">
-            <img 
-                src={headerImage} 
-                alt="Logo da aceleradora inclusiva, onde tem a imagem de um 'A' combinado com um 'I' em degrade do amarelo forte para o rosa avermelhado" 
-                className="logo"
-            />
-        </header>
-    );
+function Header({ toggleDarkMode, isDarkMode }) {
+  return (
+    <header className="header">
+      <img src={header} alt="Imagem do Cabeçalho" className="header-image" />
+      <button onClick={toggleDarkMode} className="theme-toggle">
+        {isDarkMode ? '☀️ Claro' : '🌙 Escuro'}
+      </button>
+    </header>
+  );
 }
+
+export default Header;
