@@ -93,6 +93,11 @@ Configuração de notificações baseadas na localização do usuário. Históri
 Visualização de dados passados para análise de tendências.
 
 **Autores**
+- (https://github.com/sifontesj23) - Jesus Sifontes
+- (https://github.com/GabrielleGobbi) - Gabrielle Gobbi
+- (https://github.com/YokoFarias) - Yoko Farias
+- (https://github.com/andrea-leite)- Andrea Leite
+- 
 
 
 
