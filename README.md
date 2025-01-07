@@ -94,10 +94,11 @@ Visualização de dados passados para análise de tendências.
 
 **Autores**
 - (https://github.com/sifontesj23) - Jesus Sifontes
-- (https://github.com/GabrielleGobbi) - Gabrielle Gobbi
+- (https://github.com/GabrielleGobbi) - [https://www.linkedin.com/in/gessica-gobbi-99896667/] Gabrielle Gobbi
 - (https://github.com/YokoFarias) - Yoko Farias
 - (https://github.com/andrea-leite)- Andrea Leite
-- 
+- (https://github.com/Eric-Borges)- Eric Borges
+- ()
 
 
 
