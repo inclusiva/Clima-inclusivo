@@ -33,14 +33,14 @@ As principais ferramentas e tecnologias utilizadas no desenvolvimento do projeto
 - Visualização de dados passados para análise de tendências.  
 
 ## **Autores**  
-- [Jesus Sifontes](https://github.com/sifontesj23)  
+- [Jesus Sifontes](https://github.com/sifontesj23)  - [LinkedIn](https://www.linkedin.com/in/jes%C3%BAs-alberto-sifontes-8a2419251/)
 - [Gabrielle Gobbi](https://github.com/GabrielleGobbi) - [LinkedIn](https://www.linkedin.com/in/gessica-gobbi-99896667/)  
-- [Yoko Farias](https://github.com/YokoFarias)  
-- [Andrea Leite](https://github.com/andrea-leite)  
-- [Eric Borges](https://github.com/Eric-Borges)  
+- [Yoko Farias](https://github.com/YokoFarias)  -  [LinkedIn](https://www.linkedin.com/in/yokofarias/)
+- [Andrea Leite](https://github.com/andrea-leite)  - [LinkedIn](https://www.linkedin.com/in/andrea-leite-rs/)
+- [Eric Borges](https://github.com/Eric-Borges)  - [LinkedIn](https://www.linkedin.com/in/eric-borges-baaa6628a/)
 - [Marco Barcelos](https://github.com/marcobarcelos7)  - [LinkedIn](https://www.linkedin.com/in/marco-antonio-barcelos/)
-- [Guilherme Nas](https://github.com/dronreef)  
-- [Kauany Lima](https://www.linkedin.com/in/kauany-lima-4b161724a/)  
+- [Guilherme Nas](https://github.com/dronreef)  - [LinkedIn]()
+- [Kauany Lima](https://github.com/KauanyLimaa)  - [LinkedIn](https://www.linkedin.com/in/kauany-lima-4b161724a/)
 
 ## **Referências**  
 - **OpenWeatherMap** - API para dados climáticos.  
