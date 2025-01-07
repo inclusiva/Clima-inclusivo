@@ -1,0 +1,18 @@
+footer {
+    position: fixed;
+    bottom:0;
+    left:0;
+    
+}
+  
+  .dark-mode {
+    background-color: black;
+    color: white;
+  }
+  .icon {
+    height: 25px;
+  }
+  
+  .dark-mode .icon {
+    filter: invert(1) brightness(2); /* Inverte e aumenta a visibilidade no fundo preto */
+  }
