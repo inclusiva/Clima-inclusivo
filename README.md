@@ -98,7 +98,8 @@ Visualização de dados passados para análise de tendências.
 - (https://github.com/YokoFarias) - Yoko Farias
 - (https://github.com/andrea-leite)- Andrea Leite
 - (https://github.com/Eric-Borges)- Eric Borges
-- ()
+- (https://github.com/marcobarcelos7) - Marco Barcelos
+- 
 
 
 
