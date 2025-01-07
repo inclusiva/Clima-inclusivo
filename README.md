@@ -92,6 +92,11 @@ Configuração de notificações baseadas na localização do usuário. Históri
 
 Visualização de dados passados para análise de tendências.
 
+**Autores**
+
+
+
+
 
 **Referencias**
 
