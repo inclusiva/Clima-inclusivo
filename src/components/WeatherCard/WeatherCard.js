@@ -1,56 +1,57 @@
-import React from 'react';
-//import './WeatherCard.css'; // Certifique-se de que este arquivo esteja ausente ou integrado no App.css
+// src/componentes/WeatherCard/WeatherCard.jsx
 
-const WeatherCard = ({ weather }) => {
+import React from 'react';
+
+const WeatherCard = ({ weather, language }) => {
   if (!weather) {
-    return <p>Carregando...</p>;
+    return <p>{language === 'pt' ? "Carregando..." : "Loading..."}</p>;
   }
 
-  // Lista dos dias da semana
+  const currentWeather = weather.list[0]; // Primeiro item da lista de previsão
+  const cityName = weather.city.name;
+
+  // Lista de previsão para os próximos 4 dias (usando intervalos de 8 em 8 para pegar diariamente ao meio-dia)
+  const forecastDays = weather.list.filter(item => item.dt_txt.includes("12:00:00")).slice(1, 5);
+
   const daysOfWeek = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
-
-  // Obter o dia atual e os próximos 4 dias
-  const today = new Date();
-  const currentDayIndex = today.getDay();
-  const nextDays = Array.from({ length: 4 }, (_, i) => {
-    const index = (currentDayIndex + i + 1) % 7;
-    return daysOfWeek[index];
-  });
-
-  // Renderização do clima atual
-  const currentWeather = (
-    <div className="current-weather">
-      <h2>{weather.name}</h2>
-      <p>{Math.round(weather.main.temp)}°C</p>
-      <p>Sensação térmica: {Math.round(weather.main.feels_like)}°C</p>
-      <p>Máxima: {Math.round(weather.main.temp_max)}°C</p>
-      <p>Mínima: {Math.round(weather.main.temp_min)}°C</p>
-      <p>Chances de chuva: {weather.clouds.all}%</p>
-    </div>
-  );
-
-  // Renderização do clima para os próximos dias
-  const forecastWeather = nextDays.map((day, index) => (
-    <div key={index} className="forecast-day">
-      <p>{day}</p>
-      {/* Exemplo: Ajuste isso com base na API completa */}
-      <p>Máx: {Math.round(weather.main.temp_max)}°C</p>
-      <p>Mín: {Math.round(weather.main.temp_min)}°C</p>
-      {/* Simboliza diferentes condições climáticas */}
-      <img
-        src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
-        alt={weather.weather[0].description}
-      />
-    </div>
-  ));
 
   return (
     <div className="weather-card">
-      {currentWeather}
-      <div className="forecast">{forecastWeather}</div>
+      {/* Clima Atual */}
+      <div className="current-weather">
+        <h2>{language === 'pt' ? `Agora em ${cityName}` : `Now in ${cityName}`}</h2>
+        <img
+          src={`http://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`}
+          alt={currentWeather.weather[0].description}
+        />
+        <p>{language === 'pt' ? "Temperatura" : "Temperature"}: {Math.round(currentWeather.main.temp)}°C</p>
+        <p>{language === 'pt' ? "Sensação Térmica" : "Feels Like"}: {Math.round(currentWeather.main.feels_like)}°C</p>
+        <p>{language === 'pt' ? "Máxima" : "Max"}: {Math.round(currentWeather.main.temp_max)}°C</p>
+        <p>{language === 'pt' ? "Mínima" : "Min"}: {Math.round(currentWeather.main.temp_min)}°C</p>
+        <p>{language === 'pt' ? "Chances de chuva" : "Chance of rain"}: {currentWeather.clouds.all}%</p>
+      </div>
+
+      {/* Previsão para os Próximos Dias */}
+      <div className="forecast-container">
+        {forecastDays.map((day, index) => {
+          const date = new Date(day.dt_txt);
+          const dayName = daysOfWeek[date.getDay()];
+
+          return (
+            <div key={index} className="forecast-day">
+              <p>{dayName}</p>
+              <img
+                src={`http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`}
+                alt={day.weather[0].description}
+              />
+              <p>{language === 'pt' ? "Máx" : "Max"}: {Math.round(day.main.temp_max)}°C</p>
+              <p>{language === 'pt' ? "Mín" : "Min"}: {Math.round(day.main.temp_min)}°C</p>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
 
 export { WeatherCard };
-
