@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+// src/componentes/SearchBar/SearchBar.jsx
 
-function SearchBar({ onSearch }) {
+import React, { useState } from "react";
+import { fetchCitySuggestions } from "../Api/Api"; 
+import './Style.css'; // Arquivo de estilos específico para SearchBar
+
+function SearchBar({ onSearch, language }) {
   const [input, setInput] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [loading, setLoading] = useState(false);
   const [debounceTimeout, setDebounceTimeout] = useState(null);
-
-  const GEOAPIFY_API_KEY = "221ffc853d0fe920bb3bb7b17604e522"; // Substitua pela sua chave da API
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleInputChange = (e) => {
     const value = e.target.value;
@@ -17,60 +20,76 @@ function SearchBar({ onSearch }) {
     }
 
     if (value.length > 2) {
-      setDebounceTimeout(
-        setTimeout(() => {
-          fetchSuggestions(value);
-        }, 300)
-      );
+      const timeout = setTimeout(() => {
+        loadSuggestions(value);
+      }, 300);
+      setDebounceTimeout(timeout);
     } else {
       setSuggestions([]);
+      setIsModalOpen(false);
     }
   };
 
-  const fetchSuggestions = async (query) => {
+  const loadSuggestions = async (query) => {
     setLoading(true);
-    try {
-      const response = await fetch(
-        `https://api.geoapify.com/v1/geocode/autocomplete?text=${query}&apiKey=${GEOAPIFY_API_KEY}`
-      );
-      const data = await response.json();
-      setSuggestions(
-        data.features.map((feature) => ({
-          city: feature.properties.city,
-          state: feature.properties.state,
-          country: feature.properties.country,
-        }))
-      );
-    } catch (error) {
-      console.error("Erro ao buscar sugestões:", error);
-    } finally {
-      setLoading(false);
-    }
+    const result = await fetchCitySuggestions(query);
+    setSuggestions(result);
+    setLoading(false);
+    setIsModalOpen(true);
   };
 
-  const handleSelect = (city) => {
+  const handleSelect = (cityObj) => {
     setInput("");
     setSuggestions([]);
-    onSearch(city);
+    setIsModalOpen(false);
+    onSearch(`${cityObj.city},${cityObj.state},${cityObj.country}`);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
-    <div className="search-bar">
-      <input
-        type="text"
-        value={input}
-        onChange={handleInputChange}
-        placeholder="Digite o nome da cidade"
-        className="search-input"
-      />
-      {loading && <p className="loading-text">Carregando...</p>}
-      <ul className="suggestions-list">
-        {suggestions.map((suggestion, index) => (
-          <li key={index} onClick={() => handleSelect(suggestion.city)}>
-            <strong>{suggestion.city}</strong>, {suggestion.state}, {suggestion.country}
-          </li>
-        ))}
-      </ul>
+    <div className="search-bar-container">
+      <form onSubmit={(e) => { e.preventDefault(); onSearch(input); setIsModalOpen(false); }} className="search-bar">
+        <input
+          type="text"
+          value={input}
+          onChange={handleInputChange}
+          placeholder={language === 'pt' ? "Digite o nome da cidade" : "Enter city name"}
+          className="search-input"
+          aria-label={language === 'pt' ? "Campo para buscar o clima de uma cidade" : "Field to search weather for a city"}
+        />
+        <button type="submit" className="search-button">
+          {language === 'pt' ? "Buscar" : "Search"}
+        </button>
+      </form>
+
+      {/* Modal de Sugestões */}
+      {isModalOpen && (
+        <div className="modal-overlay" onClick={closeModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <h3>{language === 'pt' ? "Sugestões" : "Suggestions"}</h3>
+            {loading ? (
+              <p>{language === 'pt' ? "Carregando sugestões..." : "Loading suggestions..."}</p>
+            ) : (
+              <ul className="suggestions-list">
+                {suggestions.map((item, index) => (
+                  <li 
+                    key={index} 
+                    onClick={() => handleSelect(item)}
+                    className="suggestion-item"
+                  >
+                    <strong>{item.city}</strong>
+                    {item.state && `, ${item.state}`}
+                    {item.country && `, ${item.country}`}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
