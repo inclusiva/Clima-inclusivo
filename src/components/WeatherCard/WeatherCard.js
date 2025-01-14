@@ -1,6 +1,9 @@
 // src/componentes/WeatherCard/WeatherCard.jsx
 
 import React from 'react';
+import TempMax from './aquecimento-global.png';
+import TempMin from './frio.png';
+
 
 const WeatherCard = ({ weather, language }) => {
   if (!weather) {
@@ -44,8 +47,12 @@ const WeatherCard = ({ weather, language }) => {
                 src={`http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`}
                 alt={day.weather[0].description}
               />
-              <p>{language === 'pt' ? "Máx" : "Max"}: {Math.round(day.main.temp_max)}°C</p>
-              <p>{language === 'pt' ? "Mín" : "Min"}: {Math.round(day.main.temp_min)}°C</p>
+               
+
+              <p><img src={TempMax} className="termometros" alt="termometro da temperatura minima"/>{language === 'pt' ? "Máx" : "Max"}: {Math.round(day.main.temp_max)}°C</p>
+
+              
+              <p><img src={TempMin} className="termometros" alt="termometro da temperatura minima"/>{language === 'pt' ? "Mín" : "Min"}: {Math.round(day.main.temp_min)}°C</p>
             </div>
           );
         })}
