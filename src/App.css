@@ -2,7 +2,7 @@
 
 /* Variáveis de Tema */
 :root {
-  --background-color: #ffffff;
+  --background-color: #d3d3d3;
   --text-color: #000000;
   --header-footer-bg: #f5f5f5;
   --card-bg-color: #d3d3d3;
@@ -44,8 +44,12 @@ body, html {
   background-color: var(--header-footer-bg);
 }
 
-.header-image {
-  max-height: 100%;
+.header .header-image {
+  max-height: 40%; 
+}
+
+.dark-mode .header-image{
+  filter: invert(1) brightness(2); /* Inverte e aumenta a visibilidade no fundo preto */
 }
 
 .header-buttons {
@@ -54,17 +58,18 @@ body, html {
 }
 
 .theme-toggle, .language-toggle {
-  background-color: #007bff;
+  background-color: #fe065c;
   color: white;
   border: none;
   border-radius: 5px;
   padding: 8px 12px;
   cursor: pointer;
   font-size: 14px;
+  font-weight: bold;
 }
 
 .theme-toggle:hover, .language-toggle:hover {
-  background-color: #0056b3;
+  background-color: #f39900;
 }
 
 /* Footer styles */
@@ -78,16 +83,21 @@ body, html {
 }
 
 .footer-image {
-  max-height: 50px;
+  max-height: 20px;
   margin-right: 10px;
 }
+
+.dark-mode .footer-image{
+     filter: invert(1) brightness(2); /* Inverte e aumenta a visibilidade no fundo preto */
+ }
+
 
 /* SearchBar styles */
 .search-bar-container {
   display: flex;
-  justify-content: center;
-  margin: 20px 0;
-  position: relative;
+  justify-content:center;
+  margin: 10px ;
+ 
 }
 
 .search-bar {
@@ -95,15 +105,16 @@ body, html {
   gap: 10px;
   width: 100%;
   max-width: 500px;
+  
 }
 
 .search-input {
   flex: 1;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #000000;
   border-radius: 5px;
   font-size: 16px;
-  background-color: var(--card-bg-color);
+  background-color:#ffffff;
   color: var(--text-color);
 }
 
@@ -113,16 +124,17 @@ body, html {
 
 .search-button {
   padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
+  background-color: #fe065c;
+  color: rgb(255, 255, 255);
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
+  font-weight: bold;
 }
 
 .search-button:hover {
-  background-color: #0056b3;
+  background-color: #f39900;
 }
 
 /* WeatherCard styles */
@@ -153,8 +165,8 @@ body, html {
 }
 
 .current-weather img {
-  width: 100px;
-  height: 100px;
+  width: 300px;
+  height: 300px;
 }
 
 .forecast-container {
@@ -169,17 +181,19 @@ body, html {
   padding: 10px;
   border-radius: 10px;
   text-align: center;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.654);
 }
 
 .forecast-day img {
-  width: 50px;
-  height: 50px;
+  width: 100px;
+  height: 100px;
 }
 
 /* Dark mode adjustments */
 .dark-mode .header,
 .dark-mode .footer {
   background-color: var(--header-footer-bg);
+  
 }
 
 .dark-mode .search-input {
@@ -214,4 +228,9 @@ body, html {
   width: 100%;
   height: 60px;
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.termometros{
+  max-height: 25px;
+  max-width: 25px;
 }
