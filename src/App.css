@@ -1,11 +1,9 @@
-/* src/App.css */
-
 /* Variáveis de Tema */
 :root {
-  --background-color: #d3d3d3;
+  --background-color: #efdde0;
   --text-color: #000000;
   --header-footer-bg: #f5f5f5;
-  --card-bg-color: #d3d3d3;
+  --card-bg-color: #e4bfc5;
   --modal-bg-color: #ffffff;
 }
 
@@ -24,6 +22,7 @@ body, html {
   box-sizing: border-box;
   font-family: Arial, sans-serif;
   min-height: 100vh;
+  font-size: 18px;
 }
 
 .app {
@@ -48,8 +47,8 @@ body, html {
   max-height: 40%; 
 }
 
-.dark-mode .header-image{
-  filter: invert(1) brightness(2); /* Inverte e aumenta a visibilidade no fundo preto */
+.dark-mode .header-image {
+  filter: brightness(0) saturate(100%) invert(1); /* Torna a imagem branca */
 }
 
 .header-buttons {
@@ -64,7 +63,7 @@ body, html {
   border-radius: 5px;
   padding: 8px 12px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
 }
 
@@ -80,6 +79,10 @@ body, html {
   padding: 10px;
   background-color: var(--header-footer-bg);
   color: var(--text-color);
+  font-size: 20px;
+  
+  margin-top: auto; /* Mantém o rodapé no final, mesmo com pouco conteúdo */
+  
 }
 
 .footer-image {
@@ -87,17 +90,15 @@ body, html {
   margin-right: 10px;
 }
 
-.dark-mode .footer-image{
-     filter: invert(1) brightness(2); /* Inverte e aumenta a visibilidade no fundo preto */
- }
-
+.dark-mode .footer-image {
+  filter: brightness(0) saturate(100%) invert(1); /* Torna a imagem branca */
+}
 
 /* SearchBar styles */
 .search-bar-container {
   display: flex;
-  justify-content:center;
-  margin: 10px ;
- 
+  justify-content: center;
+  margin: 10px;
 }
 
 .search-bar {
@@ -105,7 +106,6 @@ body, html {
   gap: 10px;
   width: 100%;
   max-width: 500px;
-  
 }
 
 .search-input {
@@ -114,7 +114,7 @@ body, html {
   border: 1px solid #000000;
   border-radius: 5px;
   font-size: 16px;
-  background-color:#ffffff;
+  background-color: #ffffff;
   color: var(--text-color);
 }
 
@@ -161,7 +161,7 @@ body, html {
 
 .current-weather p {
   margin: 5px 0;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .current-weather img {
@@ -177,7 +177,7 @@ body, html {
 }
 
 .forecast-day {
-  background-color: #ffffff;
+  background-color: #e7d9df;
   padding: 10px;
   border-radius: 10px;
   text-align: center;
@@ -187,13 +187,30 @@ body, html {
 .forecast-day img {
   width: 100px;
   height: 100px;
+  
 }
+
+.termometros {
+  max-height: 25px;
+  max-width: 25px;
+}
+/*---------------------------*/
+.TermometroGeral{
+  max-height:60px;
+  max-width:60px;
+}
+
+.TempoAtual{
+  font-size: 60px;
+  margin-top: -70px;
+  margin-bottom: 0px;
+}
+/*---------------------------*/
 
 /* Dark mode adjustments */
 .dark-mode .header,
 .dark-mode .footer {
   background-color: var(--header-footer-bg);
-  
 }
 
 .dark-mode .search-input {
@@ -215,22 +232,43 @@ body, html {
   background-color: #777;
 }
 
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+  .header-buttons {
+    flex-wrap: wrap;
+  }
 
-.footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  background-color: #f5f5f5;
-  color: var(--text-color);
-  position: fixed; /* Rodapé fixo */
-  bottom: 0;
-  width: 100%;
-  height: 60px;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  .search-bar {
+    flex-direction: column;
+  }
+
+  .forecast-container {
+    grid-template-columns: 1fr;
+  }
+
+  .current-weather img {
+    width: auto;
+    max-width: 250px;
+    height: auto;
+  }
 }
 
-.termometros{
-  max-height: 25px;
-  max-width: 25px;
+@media (max-width: 480px) {
+  .header-buttons {
+    flex-direction: column;
+  }
+
+  .search-button {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+
+  .footer {
+    font-size: 16px;
+    text-align: center;
+  }
 }
+
+
+
+
