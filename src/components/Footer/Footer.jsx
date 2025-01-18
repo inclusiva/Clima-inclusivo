@@ -6,21 +6,30 @@ import Tecnopuc from './Tecnopuc.fw.png';
 import PUCRS from './PUCRS.fw.png';
 import Hub_Farol from './Hub_Farol.fw.png';
 import Colibri from './Colibri_Logo_Preferencial_Horizontal_Positivo.png';
-function Footer() {
+
+function Footer({ language }) {
   return (
     <footer className="footer">
       <a href="https://www.thoughtworks.com/pt-br/">
-      <img src={thoughtworks} alt="Imagem do thoughtworks" className="footer-image" /></a>
-      <a href="https://tecnopuc.pucrs.br//">
-      <img src={Tecnopuc} alt="Imagem do Tecnopuc" className="footer-image" /></a>
-      <a href="https://portal.pucrs.br//">
-      <img src={PUCRS} alt="Imagem da PUCRS" className="footer-image" /></a>
-      <a href="https://portal.pucrs.br//">
-      <img src={Hub_Farol} alt="Imagem do Hub_Farol" className="footer-image" /></a>
+        <img src={thoughtworks} alt="Imagem do thoughtworks" className="footer-image" />
+      </a>
+      <a href="https://tecnopuc.pucrs.br/">
+        <img src={Tecnopuc} alt="Imagem do Tecnopuc" className="footer-image" />
+      </a>
+      <a href="https://portal.pucrs.br/">
+        <img src={PUCRS} alt="Imagem da PUCRS" className="footer-image" />
+      </a>
+      <a href="https://portal.pucrs.br/">
+        <img src={Hub_Farol} alt="Imagem do Hub Farol" className="footer-image" />
+      </a>
       <a href="https://tix.life/tecnologia-assistiva/colibri-mouse-de-cabeca/">
-      <img src={Colibri} alt="Imagem do Colibri" className="footer-image" /></a>
-      
-      <p>Criado pelas alunas da Aceleradora Inclusica 2024 - Todos os direitos reservados © 2025</p>
+        <img src={Colibri} alt="Imagem do Colibri" className="footer-image" />
+      </a>
+      <p>
+        {language === 'pt'
+          ? 'Criado pelas alunas da Aceleradora Inclusiva 2024 - Todos os direitos reservados © 2025'
+          : 'Created by the students of the Aceleradora Inclusiva 2024 - All rights reserved © 2025'}
+      </p>
     </footer>
   );
 }
