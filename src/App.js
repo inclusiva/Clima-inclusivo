@@ -1,44 +1,67 @@
-// src/App.js
+// src/App.jsx
 
 import React, { useState } from 'react';
-import './App.css';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import SearchBar from './components/SearchBar/SearchBar';
 import { WeatherCard } from './components/WeatherCard/WeatherCard';
-import { getWeather } from './components/Api/Api';
+import './App.css'; // Importa estilos globais
 
 function App() {
-  const [weather, setWeather] = useState(null);
+  // Estado para alternar entre 'pt' e 'en'
+  const [language, setLanguage] = useState('pt');
+  // Estado para o modo escuro/claro
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [language, setLanguage] = useState('pt'); // Estado para a tradução
+  // Estado para os dados do clima
+  const [weatherData, setWeatherData] = useState(null);
 
-  const handleSearch = async (city) => {
-    const data = await getWeather(city);
-    setWeather(data); // Atualiza o estado com os dados do clima
-  };
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode); // Alterna entre modo claro e escuro
-  };
-
+  // Função para alternar o idioma
   const toggleLanguage = () => {
-    setLanguage(language === 'pt' ? 'en' : 'pt');
+    setLanguage((prevLanguage) => (prevLanguage === 'pt' ? 'en' : 'pt'));
+  };
+
+  // Função para alternar o tema
+  const toggleDarkMode = () => {
+    setIsDarkMode((prevMode) => !prevMode);
+  };
+
+  // Função para buscar e armazenar os dados do clima
+  const handleSearch = async (city) => {
+    const API_URL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=221ffc853d0fe920bb3bb7b17604e522`;
+
+    try {
+      const response = await fetch(API_URL);
+      if (!response.ok) {
+        throw new Error(language === 'pt' ? 'Erro ao buscar os dados do clima' : 'Error fetching weather data');
+      }
+      const data = await response.json();
+      setWeatherData(data);
+    } catch (error) {
+      console.error(error.message);
+      setWeatherData(null);
+    }
   };
 
   return (
     <div className={`app ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
+      {/* Cabeçalho */}
       <Header 
         toggleDarkMode={toggleDarkMode} 
         isDarkMode={isDarkMode} 
-        toggleLanguage={toggleLanguage}
-        language={language}
+        toggleLanguage={toggleLanguage} 
+        language={language} 
       />
+
+      {/* Barra de Pesquisa */}
       <main>
         <SearchBar onSearch={handleSearch} language={language} />
-        {weather && <WeatherCard weather={weather} language={language} />}
+        
+        {/* Cartão de Clima */}
+        {weatherData && <WeatherCard weather={weatherData} language={language} />}
       </main>
-      <Footer />
+
+      {/* Rodapé */}
+      <Footer language={language} />
     </div>
   );
 }
