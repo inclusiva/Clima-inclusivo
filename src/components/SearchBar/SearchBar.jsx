@@ -95,3 +95,4 @@ function SearchBar({ onSearch, language }) {
 }
 
 export default SearchBar;
+
