@@ -10,7 +10,7 @@ function Header({ toggleDarkMode, isDarkMode, toggleLanguage, language }) {
       <h1>{language === 'pt' ? 'Previsão do Tempo' : 'Weather Forecast'}</h1>
       <div className="header-buttons">
         <button onClick={toggleDarkMode} className="theme-toggle">
-          {isDarkMode ? (language === 'pt' ? '☀️ Claro' : '☀️ Light') : (language === 'pt' ? '🌙 Escuro' : '🌙 Dark')}
+          {isDarkMode ? (language === 'pt' ? '☀️' : '☀️') : (language === 'pt' ? '🌙' : '🌙')}
         </button>
         <button onClick={toggleLanguage} className="language-toggle">
           {language === 'pt' ? 'EN' : 'PT'}
