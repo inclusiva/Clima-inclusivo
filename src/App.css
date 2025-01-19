@@ -269,6 +269,21 @@ body, html {
   }
 }
 
+/*--------------------=========================-------------------------*/
+.footer {
+  display: flex;
+  flex-wrap: wrap; /* Permite que os itens quebrem linha */
+}
+
+.footer-image {
+  max-width: 100px; /* Define um tamanho máximo para as imagens */
+  height: auto; /* Mantém a proporção da imagem */
+}
+
+.footer p {
+   /*flex-basis: 100%; Faz o parágrafo ocupar 100% da linha */
+  margin-top: 20px; /* Adiciona espaço acima do texto */
+}
 
 
 
